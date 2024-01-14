@@ -37,6 +37,9 @@ devDependencies:
   '@iconify-json/mdi':
     specifier: ^1.1.64
     version: 1.1.64
+  '@iconify-json/twemoji':
+    specifier: ^1.1.15
+    version: 1.1.15
   '@typescript-eslint/parser':
     specifier: ^6.18.1
     version: 6.18.1(eslint@8.56.0)(typescript@5.3.3)
@@ -765,6 +768,12 @@ packages:
 
   /@iconify-json/mdi@1.1.64:
     resolution: {integrity: sha512-zGeo5TjhNFAY6FmSDBLAzDO811t77r6v/mDi7CAL9w5eXqKez6bIjk8R9AL/RHIeq44ALP4Ozr4lMqFTkHr7ug==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/twemoji@1.1.15:
+    resolution: {integrity: sha512-ze2CAOwIWBKIP6ih6qMDItasVjRicktl2Qr3/ohZSMToAHm9z3Q6HCwE48eT0+D+uFpGBlNRQ22HHyE5izyhDg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
