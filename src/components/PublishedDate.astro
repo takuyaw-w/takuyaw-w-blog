@@ -1,0 +1,11 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = {
+  date: Date;
+};
+
+const { date } = Astro.props;
+---
+
+<span>投稿日: <FormattedDate date={date} /></span>

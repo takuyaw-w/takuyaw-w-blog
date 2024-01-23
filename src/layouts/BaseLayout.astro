@@ -1,25 +1,27 @@
 ---
-import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import GA from "../components/GA.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 type Props = {
-  title: string;
-  description: string;
-}
-
-const {title, description} = Astro.props
+  title?: string;
+};
+const { title } = Astro.props;
+const pageTitle = title === undefined ? SITE_TITLE : `${title} | ${SITE_TITLE}`;
 ---
 
 <html lang="ja">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+    <GA />
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col min-h-screen bg-gray-100">
     <Header />
-    <main class="flex-grow">
+    <div class="flex-grow py-4 mx-auto container">
       <slot />
-    </main>
+    </div>
     <Footer />
   </body>
 </html>

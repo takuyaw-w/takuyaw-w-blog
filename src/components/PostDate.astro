@@ -1,0 +1,22 @@
+---
+import PublishedDate from "./PublishedDate.astro";
+import UpdatedDate from "./UpdatedDate.astro";
+
+type Props = {
+  publishedAt: Date;
+  updatedAt?: Date;
+};
+
+const { publishedAt, updatedAt } = Astro.props;
+---
+
+<div class="text-sm text-gray-500">
+  <p><PublishedDate date={publishedAt} /></p>
+  {
+    updatedAt && (
+      <p>
+        <UpdatedDate date={updatedAt} />
+      </p>
+    )
+  }
+</div>

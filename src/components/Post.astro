@@ -1,0 +1,26 @@
+---
+import PostDate from "./PostDate.astro";
+import Tags from "./Tags.astro";
+
+type Props = {
+  slug: string;
+  title: string;
+  tags: string[];
+  publishedAt: Date;
+  updatedAt?: Date;
+};
+
+const props = Astro.props;
+---
+
+<li class="border rounded-lg bg-white p-6">
+  <a href={`/blog/${props.slug}`} class="block hover:underline">
+    <div>
+      <h3 class="text-2xl font-bold mb-2">{props.title}</h3>
+      <PostDate publishedAt={props.publishedAt} updatedAt={props.updatedAt} />
+    </div>
+  </a>
+  <div class="pt-4">
+    <Tags tags={props.tags} />
+  </div>
+</li>
