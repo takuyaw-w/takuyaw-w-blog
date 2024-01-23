@@ -1,0 +1,15 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+type Props = {
+  title?: string;
+};
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <main class="container mx-auto py-6">
+    <slot />
+  </main>
+</BaseLayout>

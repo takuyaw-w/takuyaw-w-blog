@@ -1,0 +1,41 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import DefaultLayout from "../../layouts/DefaultLayout.astro";
+import Prose from "../../components/Prose.astro";
+import Toc from "../../components/Toc.astro";
+import PostDate from "../../components/PostDate.astro";
+import Tags from "../../components/Tags.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"blog">;
+const post = Astro.props;
+const { Content, headings } = await post.render();
+---
+
+<DefaultLayout>
+  <article>
+    <header>
+      <h1 class="font-bold text-4xl mb-4">{post.data.title}</h1>
+      <PostDate
+        publishedAt={post.data.publishedAt}
+        updatedAt={post.data.updatedAt}
+      />
+      <div class="py-4">
+        <Tags tags={post.data.tags} />
+      </div>
+    </header>
+    <hr class="w-48 h-1 mx-auto my-6 bg-gray-700 border-0 rounded" />
+    <div class="grid grid-cols-12 gap-6 px-4 sm:px-0">
+      <Toc headings={headings} class="lg:col-span-4 col-span-12 lg:order-2" />
+      <Prose class="lg:col-span-8 col-span-12 lg:order-1">
+        <Content />
+      </Prose>
+    </div>
+  </article>
+</DefaultLayout>

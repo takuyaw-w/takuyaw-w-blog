@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Post from "./Post.astro";
+
+type Props = {
+  posts: CollectionEntry<"blog">[];
+};
+
+const { posts } = Astro.props;
+---
+
+<ul class="flex flex-col gap-4">
+  {
+    posts.map((post) => (
+      <Post
+        slug={post.slug}
+        title={post.data.title}
+        tags={post.data.tags}
+        publishedAt={post.data.publishedAt}
+        updatedAt={post.data.updatedAt}
+      />
+    ))
+  }
+</ul>

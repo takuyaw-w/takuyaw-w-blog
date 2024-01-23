@@ -5,11 +5,10 @@ const blog = defineCollection({
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
-    description: z.string(),
     tags: z.array(z.string()),
     // Transform string to Date object
     createdAt: z.coerce.date(),
-    updatedAt: z.coerce.date(),
+    updatedAt: z.coerce.date().optional(),
     publishedAt: z.coerce.date(),
   }),
 });

@@ -4,14 +4,18 @@ interface Props {
 }
 
 const { date } = Astro.props;
+const dateTimeFormat = new Intl.DateTimeFormat("ja-JP", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false, // 24時間制
+});
+const formattedDate = dateTimeFormat.format(date);
 ---
 
-<time datetime={date.toISOString()}>
-  {
-    date.toLocaleDateString("en-us", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  }
+<time datetime={formattedDate}>
+  {formattedDate}
 </time>
