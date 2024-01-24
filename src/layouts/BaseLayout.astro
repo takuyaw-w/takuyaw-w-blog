@@ -30,7 +30,7 @@ const pageTitle = title === undefined ? SITE_TITLE : `${title} | ${SITE_TITLE}`;
   </head>
   <body class="flex flex-col min-h-screen bg-gray-100">
     <Header />
-    <div class="flex-grow py-4 mx-auto container">
+    <div class="flex-grow py-4 mx-auto container max-w-5xl">
       <slot />
     </div>
     <Footer />
