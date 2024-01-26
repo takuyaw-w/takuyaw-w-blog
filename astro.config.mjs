@@ -9,7 +9,7 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: import.meta.env.PUBLIC_SITE,
   integrations: [
     mdx(),
     sitemap(),
